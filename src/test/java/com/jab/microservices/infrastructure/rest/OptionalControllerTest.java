@@ -14,41 +14,54 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class ClassicControllerTest {
+class OptionalControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void given_classic_endpoint_resource_when_call_with_parameter_1_then_ok() throws Exception {
+    public void given_optional_endpoint_resource_when_call_with_parameter_1_then_ok() throws Exception {
 
         //Given
         var param = 1;
 
         //When
         //Then
-        this.mockMvc.perform(get("/api/classic/resource?id="+ param))
+        this.mockMvc.perform(get("/api/optional/resource?id="+ param))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello, World")));
     }
 
     @Test
-    public void given_classic_endpoint_resource_when_call_with_parameter_2_then_ko() throws Exception {
+    public void given_optional_endpoint_resource_when_call_with_parameter_2_then_ko() throws Exception {
 
         //Given
         var param = 2;
 
         //When
         //Then
-        this.mockMvc.perform(get("/api/classic/resource?id="+ param))
+        this.mockMvc.perform(get("/api/optional/resource?id="+ param))
                 .andDo(print())
                 .andExpect(status().isServiceUnavailable());
     }
 
     @Test
-    public void given_classic_endpoint_resource2_when_call_then_ko() throws Exception {
-        this.mockMvc.perform(get("/api/classic/resource2"))
+    public void given_optional_endpoint_resource_when_call_with_parameter_3_then_ko() throws Exception {
+
+        //Given
+        var param = 3;
+
+        //When
+        //Then
+        this.mockMvc.perform(get("/api/optional/resource?id="+ param))
+                .andDo(print())
+                .andExpect(status().isServiceUnavailable());
+    }
+
+    @Test
+    public void given_optional_endpoint_resource2_when_call_then_ko() throws Exception {
+        this.mockMvc.perform(get("/api/optional/resource2"))
                 .andDo(print())
                 .andExpect(status().isServiceUnavailable());
     }
