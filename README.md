@@ -1,5 +1,9 @@
 # Spring Boot Exception Handling
 
+## Java Exception hierarchy in Java
+
+![](exception_hierarachy_diagram.png)
+
 ## How to build?
 
 **How to run in Gitpod:**
