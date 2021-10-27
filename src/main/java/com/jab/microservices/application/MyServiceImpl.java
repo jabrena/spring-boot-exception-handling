@@ -6,17 +6,17 @@ import org.springframework.stereotype.Service;
 public class MyServiceImpl implements MyService {
 
     @Override
-    public String ok() {
-        return "Hello, World";
-    }
+    public String service(Integer id) {
 
-    @Override
-    public String ko() {
+        if(id == 1) {
+            return "Hello, World";
+        }
+
         throw new RuntimeException("Katakroker");
     }
 
     @Override
-    public String ko2() throws MyGOTOException {
+    public String service2() throws MyGOTOException {
         throw new MyGOTOException("Legacy Katakroker");
     }
 }

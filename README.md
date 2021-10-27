@@ -17,3 +17,9 @@ java -version
 sdk env
 mvn clean test
 ```
+
+## Links
+
+```
+http://localhost:8080/swagger-ui/index.html
+```
