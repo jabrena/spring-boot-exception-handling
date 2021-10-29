@@ -2,8 +2,8 @@ name: build-native-image
 
 on:
   push:
-    branches:
-      - main
+    branches-ignore:
+      - '**'
 
 jobs:
   build-native-image:
