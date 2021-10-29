@@ -7,12 +7,39 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.Objects;
+
 @RestControllerAdvice
 public class CAController {
 
     private Logger logger = LoggerFactory.getLogger(CAController.class);
 
-    private record GlobalErrorResponse(String message) {}
+    //private record GlobalErrorResponse(String message) {}
+
+    private class GlobalErrorResponse {
+        private String message;
+
+        public GlobalErrorResponse(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            GlobalErrorResponse that = (GlobalErrorResponse) o;
+            return Objects.equals(message, that.message);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(message);
+        }
+    }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<GlobalErrorResponse> handleException(Exception ex) {
@@ -24,4 +51,5 @@ public class CAController {
                 .status(HttpStatus.SERVICE_UNAVAILABLE)
                 .body(new GlobalErrorResponse(message));
     }
+
 }
