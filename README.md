@@ -15,7 +15,7 @@
 ```
 java -version
 sdk env
-mvn clean test
+mvn clean test -pl example-ok
 ```
 
 ## Links
