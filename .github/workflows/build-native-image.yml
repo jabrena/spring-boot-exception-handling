@@ -2,10 +2,8 @@ name: build-native-image
 
 on:
   push:
-    paths-ignore:
-      - "docs/**"
     branches:
-      - master
+      - main
 
 jobs:
   build-native-image:

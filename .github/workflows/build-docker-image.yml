@@ -2,10 +2,8 @@ name: build-docker-image
 
 on:
   push:
-    paths-ignore:
-      - "docs/**"
     branches:
-      - master
+      - main
 
 jobs:
   build-docker-image:
