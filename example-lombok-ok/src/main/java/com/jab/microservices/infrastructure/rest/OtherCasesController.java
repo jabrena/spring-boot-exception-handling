@@ -19,7 +19,7 @@ public class OtherCasesController {
     }
 
     @GetMapping("/resource2")
-    public @ResponseBody ResponseEntity<String> resource2() throws InterruptedException {
+    public @ResponseBody ResponseEntity<String> resource2() {
 
         MyTask task = new MyTask();
         task.run();
