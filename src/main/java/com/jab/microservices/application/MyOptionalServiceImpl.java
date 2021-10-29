@@ -1,11 +1,15 @@
 package com.jab.microservices.application;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
 public class MyOptionalServiceImpl implements MyOptionalService {
+
+    private Logger logger = LoggerFactory.getLogger(MyOptionalServiceImpl.class);
 
     @Override
     public Optional<String> service(Integer id) {
@@ -16,6 +20,7 @@ public class MyOptionalServiceImpl implements MyOptionalService {
             try {
                 throw new RuntimeException("Katakroker");
             } catch (RuntimeException ex) {
+                logger.warn("Katakroker managed");
                 return Optional.empty();
             }
         }
