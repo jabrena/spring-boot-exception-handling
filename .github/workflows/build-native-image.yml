@@ -1,0 +1,40 @@
+name: build-native-image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-native-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
+
+      - uses: DeLaGuardo/setup-graalvm@5.0
+        with:
+          # GraalVM version, no pattern syntax available atm
+          graalvm: '21.3.0'
+          # Java version, optional, defaults to 'java8'. Available options are 'java8' and 'java11'.
+          java: 'java17'
+          # Architecture flag, optional, defaults to 'amd64'. Available options are 'amd64' and 'aarch64'. Later is available only for linux runners.
+          arch: 'amd64'
+      - run: java -version
+      - name: Install native-image component
+        run: |
+          gu install native-image
+
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Build Native Image
+        run: |
+          mvn clean package -DskipTests -Pspring-native,build-native-image
