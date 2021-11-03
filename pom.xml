@@ -27,7 +27,7 @@
 
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <archunit.version>0.18.0</archunit.version>
-        <spring-native.version>0.10.4</spring-native.version>
+        <spring-native.version>0.11.0-M2</spring-native.version>
     </properties>
 
     <dependencyManagement>
