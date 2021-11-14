@@ -1,6 +1,5 @@
 package com.jab.microservices.infrastructure.rest;
 
-import com.jab.microservices.application.MyGOTOException;
 import com.jab.microservices.application.MyOptionalService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,15 +27,6 @@ public class OptionalController {
     public @ResponseBody ResponseEntity<OkResponse> resource(@RequestParam Integer id) {
         return toOkResponse(myService.service(id));
     }
-
-    //Scenario forced by the Developer
-    //Disabled by ArchUnit in compile time
-    /*
-    @GetMapping("resource2")
-    public @ResponseBody ResponseEntity<OkResponse> resource2() throws MyGOTOException {
-        return toOkResponse(myService.service2());
-    }
-    */
 
     private ResponseEntity<OkResponse> toOkResponse(Optional<String> response) {
         return response

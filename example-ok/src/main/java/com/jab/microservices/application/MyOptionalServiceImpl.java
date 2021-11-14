@@ -27,11 +27,4 @@ public class MyOptionalServiceImpl implements MyOptionalService {
 
         throw new RuntimeException("Katakroker");
     }
-
-    /*
-    @Override
-    public Optional<String> service2() throws MyGOTOException {
-        throw new MyGOTOException("Legacy Katakroker");
-    }
-    */
 }
