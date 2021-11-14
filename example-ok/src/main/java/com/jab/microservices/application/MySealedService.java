@@ -12,7 +12,4 @@ public interface MySealedService {
     }
 
     ServiceResult service(Integer id);
-
-
-
 }
