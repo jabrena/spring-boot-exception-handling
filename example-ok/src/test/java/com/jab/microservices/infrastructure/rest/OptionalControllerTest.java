@@ -59,11 +59,13 @@ class OptionalControllerTest {
                 .andExpect(status().isServiceUnavailable());
     }
 
+    /*
     @Test
     public void given_optional_endpoint_resource2_when_call_then_ko() throws Exception {
         this.mockMvc.perform(get("/api/optional/resource2"))
                 .andDo(print())
                 .andExpect(status().isServiceUnavailable());
     }
+    */
 
 }

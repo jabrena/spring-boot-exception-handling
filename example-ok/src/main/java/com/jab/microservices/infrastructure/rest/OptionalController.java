@@ -30,10 +30,13 @@ public class OptionalController {
     }
 
     //Scenario forced by the Developer
+    //Disabled by ArchUnit in compile time
+    /*
     @GetMapping("resource2")
     public @ResponseBody ResponseEntity<OkResponse> resource2() throws MyGOTOException {
         return toOkResponse(myService.service2());
     }
+    */
 
     private ResponseEntity<OkResponse> toOkResponse(Optional<String> response) {
         return response

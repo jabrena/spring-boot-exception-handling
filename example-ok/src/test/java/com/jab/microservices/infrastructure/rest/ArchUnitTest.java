@@ -1,6 +1,8 @@
 package com.jab.microservices.infrastructure.rest;
 
 import com.tngtech.archunit.core.domain.JavaCodeUnit;
+import com.tngtech.archunit.core.importer.ImportOption;
+import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchCondition;
 import com.tngtech.archunit.lang.ArchRule;
@@ -9,6 +11,7 @@ import com.tngtech.archunit.lang.SimpleConditionEvent;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noCodeUnits;
 
+@AnalyzeClasses(packages = "com.jab.microservices", importOptions = {ImportOption.DoNotIncludeTests.class})
 public class ArchUnitTest {
 
     @ArchTest

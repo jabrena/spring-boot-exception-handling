@@ -15,8 +15,10 @@ public class MyServiceImpl implements MyService {
         throw new RuntimeException("Katakroker");
     }
 
+    /*
     @Override
     public String service2() throws MyGOTOException {
         throw new MyGOTOException("Legacy Katakroker");
     }
+    */
 }
