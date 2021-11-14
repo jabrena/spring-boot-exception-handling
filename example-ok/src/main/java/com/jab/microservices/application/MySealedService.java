@@ -2,14 +2,10 @@ package com.jab.microservices.application;
 
 public interface MySealedService {
 
-    //Define my types in the interface or isolate in a file
-    sealed interface ServiceResult permits
-            ServiceResult.ResultSuccess,
-            ServiceResult.ResultError {
-
-        record ResultSuccess (String result) implements ServiceResult { }
-        record ResultError (String message) implements ServiceResult { }
+    sealed interface Result permits Result.Success, Result.Error {
+        record Success (String result) implements Result { }
+        record Error (String rootCause) implements Result { }
     }
 
-    ServiceResult service(Integer id);
+    Result serviceMethod(Integer id);
 }

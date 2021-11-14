@@ -26,11 +26,11 @@ public class SealedController {
 
         //Current implementation: https://openjdk.java.net/jeps/375
         //Waiting for Java 18: https://openjdk.java.net/jeps/420
-        var result = myService.service(id);
-        if (result instanceof MySealedService.ServiceResult.ResultSuccess resultOk) {
+        var result = myService.serviceMethod(id);
+        if (result instanceof MySealedService.Result.Success resultOk) {
             return ResponseEntity.ok().body(new OkResponse(resultOk.result()));
-        } else if (result instanceof MySealedService.ServiceResult.ResultError resultKo) {
-            logger.warn(resultKo.message());
+        } else if (result instanceof MySealedService.Result.Error resultKo) {
+            logger.warn(resultKo.rootCause());
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).build();
         }
 

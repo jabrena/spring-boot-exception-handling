@@ -12,14 +12,14 @@ public class MySealedServiceImpl implements MySealedService {
     private Logger logger = LoggerFactory.getLogger(MySealedServiceImpl.class);
 
     @Override
-    public ServiceResult service(Integer id) {
+    public Result serviceMethod(Integer id) {
 
         if(id == 1) {
-            return new ServiceResult.ResultSuccess("Hello, World");
+            return new Result.Success("Hello, World");
         } else if (id == 2) {
-            return new ServiceResult.ResultError("Katakroker");
+            return new Result.Error("Katakroker");
         }
 
-        return new ServiceResult.ResultError("Katakroker");
+        return new Result.Error("Katakroker");
     }
 }
